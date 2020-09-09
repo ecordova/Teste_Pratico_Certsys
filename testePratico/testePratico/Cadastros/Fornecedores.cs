@@ -28,8 +28,32 @@ namespace testePratico.Cadastros
 
         private void Fornecedores_Load(object sender, EventArgs e)
         {
-            tabControl.SelectedTab = tabConsulta;
+            configuraInicio();
+        }
+
+        private void configuraInicio()
+        {
+            LimpaTXT();
             CarregarGrid();
+            ajustaColunasGrid();
+            tabControl.SelectedTab = tabConsulta;
+        }
+
+        private void ajustaColunasGrid()
+        {
+            dbGrid.Columns[0].Visible = false;
+
+            dbGrid.Columns[1].Width = 300;
+            dbGrid.Columns[2].Width = 200;
+            dbGrid.Columns[3].Width = 300;
+            dbGrid.Columns[4].Width = 50;
+
+            dbGrid.Columns[1].ReadOnly = true;
+            dbGrid.Columns[2].ReadOnly = true;
+            dbGrid.Columns[3].ReadOnly = true;
+            dbGrid.Columns[4].ReadOnly = true;
+
+            dbGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void CarregarGrid()
@@ -65,25 +89,66 @@ namespace testePratico.Cadastros
                 fornecedor = conn.Fornecedors.Where(f => f.FornecedorID == iFornecedorID).Select(f => f).FirstOrDefault();
             }
 
-            Fornecedor forn = new Fornecedor();
-            forn.Nome = txtNome.Text.Trim();
-            forn.CNPJ = txtCNPJ.Text.Trim();
-            forn.Endereco = txtEndereco.Text.Trim();
-            forn.isAtivo = chkAtivo.Checked == true ? true : false;
+            fornecedor.Nome = txtNome.Text.Trim();
+            fornecedor.CNPJ = txtCNPJ.Text.Trim();
+            fornecedor.Endereco = txtEndereco.Text.Trim();
+            fornecedor.isAtivo = chkAtivo.Checked == true ? true : false;
 
             if (iFornecedorID == 0)
-               conn.Fornecedors.Add(forn);
+                conn.Fornecedors.Add(fornecedor);
 
             conn.SaveChanges();
 
-            LimpaTXT();
-            CarregarGrid();
-            tabControl.SelectedTab = tabConsulta;
+            configuraInicio();
         }
 
-        private void dbGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            
+            configuraInicio();
+        }
+
+        private void dbGrid_DoubleClick(object sender, EventArgs e)
+        {
+            iFornecedorID = Convert.ToInt32(dbGrid.CurrentRow.Cells[0].Value);
+
+            if (iFornecedorID != 0)
+            {
+                TestePraticoEntities conn = new TestePraticoEntities();
+                Fornecedor fornecedor = conn.Fornecedors.Where(f => f.FornecedorID == iFornecedorID).Select(f => f).FirstOrDefault();
+
+                if (fornecedor != null)
+                {
+                    LimpaTXT();
+                    txtNome.Text = fornecedor.Nome;
+                    txtCNPJ.Text = fornecedor.CNPJ;
+                    txtEndereco.Text = fornecedor.Endereco;
+                    chkAtivo.Checked = fornecedor.isAtivo;
+
+                    tabControl.SelectedTab = tabCadastro;
+                }
+                else
+                {
+                    MessageBox.Show("Fornecedor não Localizado.");
+                }
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            iFornecedorID = Convert.ToInt32(dbGrid.Rows[dbGrid.CurrentRow.Index].Cells["FornecedorID"].Value.ToString());
+
+            TestePraticoEntities conn = new TestePraticoEntities();
+            Fornecedor fornecedor = conn.Fornecedors.Where(f => f.FornecedorID == iFornecedorID).Select(f => f).FirstOrDefault();
+
+            if (fornecedor != null)
+            {
+                conn.Fornecedors.Remove(fornecedor);
+                conn.SaveChanges();
+
+                MessageBox.Show("Fornecedor Excluido com Sucesso.");
+            }
+
+            configuraInicio();
         }
     }
 }
