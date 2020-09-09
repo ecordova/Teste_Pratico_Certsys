@@ -1,0 +1,17 @@
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\bin\Debug\testePratico.exe.config
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\bin\Debug\testePratico.exe
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\bin\Debug\testePratico.pdb
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.csprojAssemblyReference.cache
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.Properties.Resources.resources
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.csproj.GenerateResource.cache
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.csproj.CoreCompileInputs.cache
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.exe
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.pdb
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.frmLogin.resources
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.Admin.frmPrincipal.resources
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\bin\Debug\EntityFramework.dll
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\bin\Debug\EntityFramework.SqlServer.dll
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\bin\Debug\EntityFramework.xml
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\bin\Debug\EntityFramework.SqlServer.xml
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.csproj.CopyComplete
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.Cadastros.Fornecedores.resources
