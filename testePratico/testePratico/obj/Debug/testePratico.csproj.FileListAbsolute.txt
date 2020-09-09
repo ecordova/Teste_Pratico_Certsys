@@ -15,3 +15,4 @@ E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\bin\Debug\EntityF
 E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\bin\Debug\EntityFramework.SqlServer.xml
 E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.csproj.CopyComplete
 E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.Cadastros.Fornecedores.resources
+E:\Projetos\C#\Teste_Pratico_Certsys\testePratico\testePratico\obj\Debug\testePratico.Cadastros.Produtos.resources

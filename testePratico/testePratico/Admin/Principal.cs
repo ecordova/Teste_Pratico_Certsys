@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using testePratico.Cadastros;
 using testePratico.Lib;
@@ -33,10 +27,20 @@ namespace testePratico.Admin
 
         private void fornecedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Fornecedores tela = new Fornecedores();
 
             if (Application.OpenForms.OfType<Fornecedores>().Count() == 0)
             {
-                Fornecedores tela = new Fornecedores();
+                tela.MdiParent = this;
+                tela.Show();
+            }
+        }
+
+        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Produtos tela = new Produtos();
+            if (Application.OpenForms.OfType<Produtos>().Count() == 0)
+            {
                 tela.MdiParent = this;
                 tela.Show();
             }

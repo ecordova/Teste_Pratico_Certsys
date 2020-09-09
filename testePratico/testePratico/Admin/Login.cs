@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
+using testePratico.DAL;
 using testePratico.Lib;
 using testePratico.Model;
 
@@ -25,19 +25,19 @@ namespace testePratico
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            TestePraticoEntities conn = new TestePraticoEntities();
-            Usuario user = conn.Usuarios.Where(u => u.Login == txtUsuario.Text.Trim() && u.Senha == txtSenha.Text.Trim()).Select(x => x).FirstOrDefault();
+            Usuario user = LoginDAL.buscarUsuario(txtUsuario.Text, txtSenha.Text);
 
             if (user == null)
             {
-                MessageBox.Show("Usuário e senha invalidos. Verifique.");
+                MessageBox.Show("Usuário ou Senha invalidos. Verifique.");
                 LimpaTXT();
             }
-            else{
+            else
+            {
                 this.DialogResult = DialogResult.OK;
                 GlobalVars.User_Nome = user.Nome;
                 Close();
-            }            
+            }
         }
 
         private void LimpaTXT()

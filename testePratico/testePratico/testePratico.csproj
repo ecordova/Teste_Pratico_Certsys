@@ -73,6 +73,14 @@
     <Compile Include="Cadastros\Fornecedores.Designer.cs">
       <DependentUpon>Fornecedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\Produtos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\Produtos.Designer.cs">
+      <DependentUpon>Produtos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\FornecedoresDAL.cs" />
+    <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="Lib\GlobalVars.cs" />
     <Compile Include="Model\ADO_EF_Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -105,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\Fornecedores.resx">
       <DependentUpon>Fornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastros\Produtos.resx">
+      <DependentUpon>Produtos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

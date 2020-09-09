@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using testePratico.DAL;
+using testePratico.Lib;
 using testePratico.Model;
 
 namespace testePratico.Cadastros
@@ -35,7 +30,6 @@ namespace testePratico.Cadastros
         {
             LimpaTXT();
             CarregarGrid();
-            ajustaColunasGrid();
             tabControl.SelectedTab = tabConsulta;
         }
 
@@ -58,9 +52,9 @@ namespace testePratico.Cadastros
 
         private void CarregarGrid()
         {
-            TestePraticoEntities conn = new TestePraticoEntities();
-            var lista = conn.Fornecedors.Select(f => f).OrderBy(f => f.Nome).ToList();
+            var lista = FornecedoresDAL.listaFornecedores();
             dbGrid.DataSource = lista;
+            ajustaColunasGrid();
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -86,7 +80,7 @@ namespace testePratico.Cadastros
 
             if (iFornecedorID != 0)
             {
-                fornecedor = conn.Fornecedors.Where(f => f.FornecedorID == iFornecedorID).Select(f => f).FirstOrDefault();
+                fornecedor = FornecedoresDAL.buscaFornecedorPorID(iFornecedorID);
             }
 
             fornecedor.Nome = txtNome.Text.Trim();
@@ -113,8 +107,7 @@ namespace testePratico.Cadastros
 
             if (iFornecedorID != 0)
             {
-                TestePraticoEntities conn = new TestePraticoEntities();
-                Fornecedor fornecedor = conn.Fornecedors.Where(f => f.FornecedorID == iFornecedorID).Select(f => f).FirstOrDefault();
+                Fornecedor fornecedor = FornecedoresDAL.buscaFornecedorPorID(iFornecedorID);
 
                 if (fornecedor != null)
                 {
@@ -137,18 +130,34 @@ namespace testePratico.Cadastros
         {
             iFornecedorID = Convert.ToInt32(dbGrid.Rows[dbGrid.CurrentRow.Index].Cells["FornecedorID"].Value.ToString());
 
-            TestePraticoEntities conn = new TestePraticoEntities();
-            Fornecedor fornecedor = conn.Fornecedors.Where(f => f.FornecedorID == iFornecedorID).Select(f => f).FirstOrDefault();
-
-            if (fornecedor != null)
+            if (iFornecedorID != 0)
             {
-                conn.Fornecedors.Remove(fornecedor);
-                conn.SaveChanges();
+                bool bOK = FornecedoresDAL.excluirFornecedor(iFornecedorID);
 
-                MessageBox.Show("Fornecedor Excluido com Sucesso.");
+                if (bOK)
+                    MessageBox.Show("Fornecedor Excluido com Sucesso.");
+                else
+                    MessageBox.Show(GlobalVars.Error_Messages);
             }
 
             configuraInicio();
+        }
+
+        private void txtPesquisa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                if (txtPesquisa.Text.Trim() != "")
+                {
+                    var lista = FornecedoresDAL.pesquisaParcial(txtPesquisa.Text);
+
+                    dbGrid.DataSource = lista;
+                }
+                else
+                {
+                    CarregarGrid();
+                }
+            }
         }
     }
 }
