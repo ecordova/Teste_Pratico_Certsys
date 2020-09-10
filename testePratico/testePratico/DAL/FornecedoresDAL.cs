@@ -76,5 +76,20 @@ namespace testePratico.DAL
                 return null;
             }
         }
+
+        internal static object buscaFornecedorCombo()
+        {
+            try
+            {
+                TestePraticoEntities conn = new TestePraticoEntities();
+                var lista = (from f in conn.Fornecedors select new { f.FornecedorID, f.Nome }).ToList();
+
+                return lista;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

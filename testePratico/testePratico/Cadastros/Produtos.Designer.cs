@@ -40,6 +40,8 @@
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabCadastro = new System.Windows.Forms.TabPage();
+            this.txtQuantidade = new System.Windows.Forms.NumericUpDown();
+            this.cbxFornecedor = new System.Windows.Forms.ComboBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,16 +49,14 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ProdutoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FornecedorNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeFornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tabControl.SuspendLayout();
             this.tabConsulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbGrid)).BeginInit();
             this.tabCadastro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
             this.SuspendLayout();
             // 
             // btnNovo
@@ -68,6 +68,7 @@
             this.btnNovo.TabIndex = 4;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnExcluir
             // 
@@ -78,6 +79,7 @@
             this.btnExcluir.TabIndex = 3;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // tabControl
             // 
@@ -113,8 +115,8 @@
             this.dbGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dbGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProdutoID,
-            this.Nome,
-            this.FornecedorNome,
+            this.NomeProduto,
+            this.NomeFornecedor,
             this.Quantidade});
             this.dbGrid.Location = new System.Drawing.Point(7, 55);
             this.dbGrid.MultiSelect = false;
@@ -147,8 +149,8 @@
             // 
             // tabCadastro
             // 
-            this.tabCadastro.Controls.Add(this.numericUpDown1);
-            this.tabCadastro.Controls.Add(this.comboBox1);
+            this.tabCadastro.Controls.Add(this.txtQuantidade);
+            this.tabCadastro.Controls.Add(this.cbxFornecedor);
             this.tabCadastro.Controls.Add(this.btnSalvar);
             this.tabCadastro.Controls.Add(this.btnCancelar);
             this.tabCadastro.Controls.Add(this.label4);
@@ -163,15 +165,32 @@
             this.tabCadastro.Text = "Cadastro";
             this.tabCadastro.UseVisualStyleBackColor = true;
             // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.Location = new System.Drawing.Point(238, 172);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(120, 30);
+            this.txtQuantidade.TabIndex = 2;
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cbxFornecedor
+            // 
+            this.cbxFornecedor.FormattingEnabled = true;
+            this.cbxFornecedor.Location = new System.Drawing.Point(238, 112);
+            this.cbxFornecedor.Name = "cbxFornecedor";
+            this.cbxFornecedor.Size = new System.Drawing.Size(428, 33);
+            this.cbxFornecedor.TabIndex = 1;
+            // 
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(641, 360);
+            this.btnSalvar.Location = new System.Drawing.Point(709, 360);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(108, 35);
             this.btnSalvar.TabIndex = 3;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnCancelar
             // 
@@ -183,6 +202,7 @@
             this.btnCancelar.TabStop = false;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // label4
             // 
@@ -231,30 +251,29 @@
             this.ProdutoID.MinimumWidth = 6;
             this.ProdutoID.Name = "ProdutoID";
             this.ProdutoID.ReadOnly = true;
-            this.ProdutoID.Visible = false;
             this.ProdutoID.Width = 125;
             // 
-            // Nome
+            // NomeProduto
             // 
-            this.Nome.DataPropertyName = "Nome";
+            this.NomeProduto.DataPropertyName = "NomeProduto";
             dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Nome.DefaultCellStyle = dataGridViewCellStyle14;
-            this.Nome.HeaderText = "Nome";
-            this.Nome.MinimumWidth = 6;
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Width = 125;
+            this.NomeProduto.DefaultCellStyle = dataGridViewCellStyle14;
+            this.NomeProduto.HeaderText = "Nome";
+            this.NomeProduto.MinimumWidth = 6;
+            this.NomeProduto.Name = "NomeProduto";
+            this.NomeProduto.ReadOnly = true;
+            this.NomeProduto.Width = 125;
             // 
-            // FornecedorNome
+            // NomeFornecedor
             // 
-            this.FornecedorNome.DataPropertyName = "FornecedorNome";
+            this.NomeFornecedor.DataPropertyName = "NomeFornecedor";
             dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.FornecedorNome.DefaultCellStyle = dataGridViewCellStyle15;
-            this.FornecedorNome.HeaderText = "Fornecedor";
-            this.FornecedorNome.MinimumWidth = 6;
-            this.FornecedorNome.Name = "FornecedorNome";
-            this.FornecedorNome.ReadOnly = true;
-            this.FornecedorNome.Width = 125;
+            this.NomeFornecedor.DefaultCellStyle = dataGridViewCellStyle15;
+            this.NomeFornecedor.HeaderText = "Fornecedor";
+            this.NomeFornecedor.MinimumWidth = 6;
+            this.NomeFornecedor.Name = "NomeFornecedor";
+            this.NomeFornecedor.ReadOnly = true;
+            this.NomeFornecedor.Width = 125;
             // 
             // Quantidade
             // 
@@ -269,22 +288,6 @@
             this.Quantidade.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Quantidade.Width = 125;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(238, 112);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(428, 33);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(238, 172);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 30);
-            this.numericUpDown1.TabIndex = 2;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -293,19 +296,23 @@
             this.Controls.Add(this.tabControl);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Produtos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Produtos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Produtos_FormClosed);
+            this.Load += new System.EventHandler(this.Produtos_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Produtos_KeyPress);
             this.tabControl.ResumeLayout(false);
             this.tabConsulta.ResumeLayout(false);
             this.tabConsulta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbGrid)).EndInit();
             this.tabCadastro.ResumeLayout(false);
             this.tabCadastro.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -326,11 +333,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown txtQuantidade;
+        private System.Windows.Forms.ComboBox cbxFornecedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdutoID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FornecedorNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeFornecedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

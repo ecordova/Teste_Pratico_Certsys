@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="DAL\FornecedoresDAL.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
+    <Compile Include="DAL\ProdutosDAL.cs" />
     <Compile Include="Lib\GlobalVars.cs" />
     <Compile Include="Model\ADO_EF_Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -98,6 +99,9 @@
       <DependentUpon>ADO_EF_Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Fornecedor.cs">
+      <DependentUpon>ADO_EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Produto.cs">
       <DependentUpon>ADO_EF_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Usuario.cs">

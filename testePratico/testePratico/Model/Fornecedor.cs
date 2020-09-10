@@ -14,10 +14,19 @@ namespace testePratico.Model
     
     public partial class Fornecedor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Fornecedor()
+        {
+            this.Produtoes = new HashSet<Produto>();
+        }
+    
         public int FornecedorID { get; set; }
         public string Nome { get; set; }
         public string CNPJ { get; set; }
         public string Endereco { get; set; }
         public bool isAtivo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Produto> Produtoes { get; set; }
     }
 }

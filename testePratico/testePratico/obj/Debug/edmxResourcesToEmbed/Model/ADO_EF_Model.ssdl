@@ -10,6 +10,15 @@
     <Property Name="Endereco" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="isAtivo" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="ProdutoID" />
+    </Key>
+    <Property Name="ProdutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FornecedorID" Type="int" Nullable="false" />
+    <Property Name="Quantidade" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Usuario">
     <Key>
       <PropertyRef Name="UsuarioID" />
@@ -20,8 +29,25 @@
     <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="isAtivo" Type="bit" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Produto_Fornecedor">
+    <End Role="Fornecedor" Type="Self.Fornecedor" Multiplicity="1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedor">
+        <PropertyRef Name="FornecedorID" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="FornecedorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="TestePraticoModelStoreContainer">
     <EntitySet Name="Fornecedor" EntityType="Self.Fornecedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Produto_Fornecedor" Association="Self.FK_Produto_Fornecedor">
+      <End Role="Fornecedor" EntitySet="Fornecedor" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

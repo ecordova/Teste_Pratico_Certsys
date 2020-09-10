@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabConsulta = new System.Windows.Forms.TabPage();
             this.btnNovo = new System.Windows.Forms.Button();
@@ -137,8 +137,8 @@
             // FornecedorID
             // 
             this.FornecedorID.DataPropertyName = "FornecedorID";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FornecedorID.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FornecedorID.DefaultCellStyle = dataGridViewCellStyle6;
             this.FornecedorID.HeaderText = "FornecedorID";
             this.FornecedorID.MinimumWidth = 6;
             this.FornecedorID.Name = "FornecedorID";
@@ -149,8 +149,8 @@
             // Nome
             // 
             this.Nome.DataPropertyName = "Nome";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Nome.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Nome.DefaultCellStyle = dataGridViewCellStyle7;
             this.Nome.HeaderText = "Nome";
             this.Nome.MinimumWidth = 6;
             this.Nome.Name = "Nome";
@@ -160,8 +160,8 @@
             // CNPJ
             // 
             this.CNPJ.DataPropertyName = "CNPJ";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.CNPJ.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.CNPJ.DefaultCellStyle = dataGridViewCellStyle8;
             this.CNPJ.HeaderText = "CNPJ";
             this.CNPJ.MinimumWidth = 6;
             this.CNPJ.Name = "CNPJ";
@@ -171,8 +171,8 @@
             // Endereco
             // 
             this.Endereco.DataPropertyName = "Endereco";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Endereco.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Endereco.DefaultCellStyle = dataGridViewCellStyle9;
             this.Endereco.HeaderText = "Endereco";
             this.Endereco.MinimumWidth = 6;
             this.Endereco.Name = "Endereco";
@@ -182,10 +182,10 @@
             // Ativo
             // 
             this.Ativo.DataPropertyName = "isAtivo";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle5.NullValue = false;
-            this.Ativo.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle10.NullValue = false;
+            this.Ativo.DefaultCellStyle = dataGridViewCellStyle10;
             this.Ativo.HeaderText = "Ativo";
             this.Ativo.MinimumWidth = 6;
             this.Ativo.Name = "Ativo";
@@ -222,10 +222,10 @@
             this.tabCadastro.Controls.Add(this.label3);
             this.tabCadastro.Controls.Add(this.txtNome);
             this.tabCadastro.Controls.Add(this.label2);
-            this.tabCadastro.Location = new System.Drawing.Point(4, 25);
+            this.tabCadastro.Location = new System.Drawing.Point(4, 34);
             this.tabCadastro.Name = "tabCadastro";
             this.tabCadastro.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCadastro.Size = new System.Drawing.Size(859, 421);
+            this.tabCadastro.Size = new System.Drawing.Size(859, 422);
             this.tabCadastro.TabIndex = 1;
             this.tabCadastro.Text = "Cadastro";
             this.tabCadastro.UseVisualStyleBackColor = true;
@@ -243,7 +243,7 @@
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(641, 360);
+            this.btnSalvar.Location = new System.Drawing.Point(704, 360);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(108, 35);
             this.btnSalvar.TabIndex = 5;

@@ -15,6 +15,15 @@
           <Property Name="Endereco" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="isAtivo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="ProdutoID" />
+          </Key>
+          <Property Name="ProdutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FornecedorID" Type="int" Nullable="false" />
+          <Property Name="Quantidade" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="UsuarioID" />
@@ -25,9 +34,26 @@
           <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="isAtivo" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Produto_Fornecedor">
+          <End Role="Fornecedor" Type="Self.Fornecedor" Multiplicity="1" />
+          <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fornecedor">
+              <PropertyRef Name="FornecedorID" />
+            </Principal>
+            <Dependent Role="Produto">
+              <PropertyRef Name="FornecedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TestePraticoModelStoreContainer">
           <EntitySet Name="Fornecedor" EntityType="Self.Fornecedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Produto_Fornecedor" Association="Self.FK_Produto_Fornecedor">
+            <End Role="Fornecedor" EntitySet="Fornecedor" />
+            <End Role="Produto" EntitySet="Produto" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -46,6 +72,11 @@
         <EntityContainer Name="TestePraticoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <EntitySet Name="Fornecedors" EntityType="TestePraticoModel.Fornecedor" />
+          <EntitySet Name="Produtoes" EntityType="TestePraticoModel.Produto" />
+          <AssociationSet Name="FK_Produto_Fornecedor" Association="TestePraticoModel.FK_Produto_Fornecedor">
+            <End Role="Fornecedor" EntitySet="Fornecedors" />
+            <End Role="Produto" EntitySet="Produtoes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Fornecedor">
           <Key>
@@ -56,7 +87,30 @@
           <Property Name="CNPJ" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Endereco" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="isAtivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Produtoes" Relationship="TestePraticoModel.FK_Produto_Fornecedor" FromRole="Fornecedor" ToRole="Produto" />
         </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="ProdutoID" />
+          </Key>
+          <Property Name="ProdutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FornecedorID" Type="Int32" Nullable="false" />
+          <Property Name="Quantidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fornecedor" Relationship="TestePraticoModel.FK_Produto_Fornecedor" FromRole="Produto" ToRole="Fornecedor" />
+        </EntityType>
+        <Association Name="FK_Produto_Fornecedor">
+          <End Type="TestePraticoModel.Fornecedor" Role="Fornecedor" Multiplicity="1" />
+          <End Type="TestePraticoModel.Produto" Role="Produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fornecedor">
+              <PropertyRef Name="FornecedorID" />
+            </Principal>
+            <Dependent Role="Produto">
+              <PropertyRef Name="FornecedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -82,6 +136,16 @@
                 <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="FornecedorID" ColumnName="FornecedorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produtoes">
+            <EntityTypeMapping TypeName="TestePraticoModel.Produto">
+              <MappingFragment StoreEntitySet="Produto">
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="FornecedorID" ColumnName="FornecedorID" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="ProdutoID" ColumnName="ProdutoID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

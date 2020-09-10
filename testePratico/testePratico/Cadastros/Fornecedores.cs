@@ -59,9 +59,9 @@ namespace testePratico.Cadastros
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            tabControl.SelectedTab = tabCadastro;
             iFornecedorID = 0;
             LimpaTXT();
+            tabControl.SelectedTab = tabCadastro;
         }
 
         private void LimpaTXT()
@@ -75,25 +75,32 @@ namespace testePratico.Cadastros
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            TestePraticoEntities conn = new TestePraticoEntities();
-            Fornecedor fornecedor = new Fornecedor();
-
-            if (iFornecedorID != 0)
+            if (txtNome.Text.Trim() == "" || txtCNPJ.Text.Trim() == "" || txtEndereco.Text.Trim() == "")
             {
-                fornecedor = FornecedoresDAL.buscaFornecedorPorID(iFornecedorID);
+                MessageBox.Show("Os Campos Nome, CNPJ e Endereço, são Obrigatórios.");
             }
+            else
+            {
+                TestePraticoEntities conn = new TestePraticoEntities();
+                Fornecedor fornecedor = new Fornecedor();
 
-            fornecedor.Nome = txtNome.Text.Trim();
-            fornecedor.CNPJ = txtCNPJ.Text.Trim();
-            fornecedor.Endereco = txtEndereco.Text.Trim();
-            fornecedor.isAtivo = chkAtivo.Checked == true ? true : false;
+                if (iFornecedorID != 0)
+                {
+                    fornecedor = FornecedoresDAL.buscaFornecedorPorID(iFornecedorID);
+                }
 
-            if (iFornecedorID == 0)
-                conn.Fornecedors.Add(fornecedor);
+                fornecedor.Nome = txtNome.Text.Trim();
+                fornecedor.CNPJ = txtCNPJ.Text.Trim();
+                fornecedor.Endereco = txtEndereco.Text.Trim();
+                fornecedor.isAtivo = chkAtivo.Checked == true ? true : false;
 
-            conn.SaveChanges();
+                if (iFornecedorID == 0)
+                    conn.Fornecedors.Add(fornecedor);
 
-            configuraInicio();
+                conn.SaveChanges();
+
+                configuraInicio();
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
