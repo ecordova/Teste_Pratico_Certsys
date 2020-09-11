@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="TestePraticoModel.Usuario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TestePraticoModel.Fornecedor" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="TestePraticoModel.Produto" Width="1.5" PointX="5.625" PointY="0.875" />
+        <EntityTypeShape EntityType="TestePraticoModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" />
         <AssociationConnector Association="TestePraticoModel.FK_Produto_Fornecedor" />
       </Diagram>
     </edmx:Diagrams>

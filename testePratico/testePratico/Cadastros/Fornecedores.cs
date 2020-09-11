@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
 using System.Windows.Forms;
 using testePratico.DAL;
 using testePratico.Lib;
@@ -94,9 +95,7 @@ namespace testePratico.Cadastros
                 fornecedor.Endereco = txtEndereco.Text.Trim();
                 fornecedor.isAtivo = chkAtivo.Checked == true ? true : false;
 
-                if (iFornecedorID == 0)
-                    conn.Fornecedors.Add(fornecedor);
-
+                conn.Fornecedors.AddOrUpdate(fornecedor);
                 conn.SaveChanges();
 
                 configuraInicio();

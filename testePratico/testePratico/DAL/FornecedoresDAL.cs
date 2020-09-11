@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using testePratico.Lib;
 using testePratico.Model;
@@ -45,7 +46,8 @@ namespace testePratico.DAL
 
                 if (forn != null)
                 {
-                    conn.Fornecedors.Remove(forn);
+                    forn.isAtivo = false;
+                    conn.Fornecedors.AddOrUpdate(forn);
                     conn.SaveChanges();
 
                     return true;
@@ -82,7 +84,9 @@ namespace testePratico.DAL
             try
             {
                 TestePraticoEntities conn = new TestePraticoEntities();
-                var lista = (from f in conn.Fornecedors select new { f.FornecedorID, f.Nome }).ToList();
+                var lista = (from f in conn.Fornecedors
+                             where f.isAtivo == true
+                             select new { f.FornecedorID, f.Nome }).ToList();
 
                 return lista;
             }

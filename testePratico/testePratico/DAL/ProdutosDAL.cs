@@ -84,5 +84,19 @@ namespace testePratico.DAL
                 return false;
             }
         }
+
+        internal static Produto buscaProdutoPorID(int pProdutoID)
+        {
+            try
+            {
+                TestePraticoEntities conn = new TestePraticoEntities();
+                Produto prod = conn.Produtoes.Include("Fornecedor").Where(f => f.ProdutoID == pProdutoID).Select(f => f).FirstOrDefault();
+                return prod;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

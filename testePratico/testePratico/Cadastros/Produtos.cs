@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
+using System.Transactions;
 using System.Windows.Forms;
 using testePratico.DAL;
 using testePratico.Lib;
@@ -9,7 +11,7 @@ namespace testePratico.Cadastros
     public partial class Produtos : Form
     {
         private int iProdutoID = 0;
-        
+
         public Produtos()
         {
             InitializeComponent();
@@ -119,30 +121,63 @@ namespace testePratico.Cadastros
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text.Trim() == "" || cbxFornecedor.SelectedIndex <= 0 || txtQuantidade.Value <= 0)
+            if (txtNome.Text.Trim() == "" || int.Parse(cbxFornecedor.SelectedValue.ToString()) <= 0 || txtQuantidade.Value <= 0)
             {
                 MessageBox.Show("Os campos Nome, Fornecedor e Quantidade são Obrigatorios");
             }
             else
             {
-                TestePraticoEntities conn = new TestePraticoEntities();
-                Produto produto = new Produto();
-
-                if (iProdutoID != 0)
+                try
                 {
-                    produto = ProdutosDAL.buscaProdutoPorID(iProdutoID);
+                
+                    TestePraticoEntities conn = new TestePraticoEntities();
+                    Produto produto = new Produto();
+                    Fornecedor fornecedor = new Fornecedor();
+
+                    if (iProdutoID != 0)
+                    {
+                        produto = ProdutosDAL.buscaProdutoPorID(iProdutoID);
+                    }
+
+                    produto.Nome = txtNome.Text.Trim();
+                    produto.FornecedorID = (int)cbxFornecedor.SelectedValue;
+                    produto.Quantidade = (int)txtQuantidade.Value;
+
+                    conn.Produtoes.AddOrUpdate(produto);
+                    conn.SaveChanges();
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show("Erro: " + err.Message);
                 }
 
-                produto.Nome = txtNome.Text.Trim();
-                produto.FornecedorID = (int)cbxFornecedor.SelectedValue;
-                produto.Quantidade = (int)txtQuantidade.Value;
-
-                if (iProdutoID == 0)
-                    conn.Produtoes.Add(produto);
-
-                conn.SaveChanges();
-
                 configuraInicio();
+            }
+        }
+
+        private void dbGrid_DoubleClick(object sender, EventArgs e)
+        {
+            iProdutoID = Convert.ToInt32(dbGrid.CurrentRow.Cells[0].Value);
+
+            if (iProdutoID != 0)
+            {
+                Produto prod = ProdutosDAL.buscaProdutoPorID(iProdutoID);
+
+                if (prod != null)
+                {
+                    LimpaTXT();
+                    montaComboFornecedor();
+
+                    txtNome.Text = prod.Nome;
+                    cbxFornecedor.SelectedValue = prod.FornecedorID;
+                    txtQuantidade.Value = prod.Quantidade;
+
+                    tabControl.SelectedTab = tabCadastro;
+                }
+                else
+                {
+                    MessageBox.Show("Produto não Localizado.");
+                }
             }
         }
     }

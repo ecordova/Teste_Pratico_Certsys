@@ -44,6 +44,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -102,6 +103,9 @@
       <DependentUpon>ADO_EF_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Produto.cs">
+      <DependentUpon>ADO_EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagram.cs">
       <DependentUpon>ADO_EF_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Usuario.cs">

@@ -28,5 +28,6 @@ namespace testePratico.Model
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Fornecedor> Fornecedors { get; set; }
         public virtual DbSet<Produto> Produtoes { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

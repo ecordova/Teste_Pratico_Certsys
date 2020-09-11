@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabConsulta = new System.Windows.Forms.TabPage();
             this.dbGrid = new System.Windows.Forms.DataGridView();
+            this.ProdutoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeFornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabCadastro = new System.Windows.Forms.TabPage();
@@ -48,10 +52,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.ProdutoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeFornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabConsulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbGrid)).BeginInit();
@@ -128,6 +128,53 @@
             this.dbGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dbGrid.Size = new System.Drawing.Size(844, 314);
             this.dbGrid.TabIndex = 2;
+            this.dbGrid.DoubleClick += new System.EventHandler(this.dbGrid_DoubleClick);
+            // 
+            // ProdutoID
+            // 
+            this.ProdutoID.DataPropertyName = "ProdutoID";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProdutoID.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ProdutoID.HeaderText = "ProdutoID";
+            this.ProdutoID.MinimumWidth = 6;
+            this.ProdutoID.Name = "ProdutoID";
+            this.ProdutoID.ReadOnly = true;
+            this.ProdutoID.Width = 125;
+            // 
+            // NomeProduto
+            // 
+            this.NomeProduto.DataPropertyName = "NomeProduto";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NomeProduto.DefaultCellStyle = dataGridViewCellStyle2;
+            this.NomeProduto.HeaderText = "Nome";
+            this.NomeProduto.MinimumWidth = 6;
+            this.NomeProduto.Name = "NomeProduto";
+            this.NomeProduto.ReadOnly = true;
+            this.NomeProduto.Width = 125;
+            // 
+            // NomeFornecedor
+            // 
+            this.NomeFornecedor.DataPropertyName = "NomeFornecedor";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.NomeFornecedor.DefaultCellStyle = dataGridViewCellStyle3;
+            this.NomeFornecedor.HeaderText = "Fornecedor";
+            this.NomeFornecedor.MinimumWidth = 6;
+            this.NomeFornecedor.Name = "NomeFornecedor";
+            this.NomeFornecedor.ReadOnly = true;
+            this.NomeFornecedor.Width = 125;
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.DataPropertyName = "Quantidade";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Quantidade.HeaderText = "Quantidade";
+            this.Quantidade.MinimumWidth = 6;
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
+            this.Quantidade.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Quantidade.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Quantidade.Width = 125;
             // 
             // txtPesquisa
             // 
@@ -241,52 +288,6 @@
             this.label2.Size = new System.Drawing.Size(64, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nome";
-            // 
-            // ProdutoID
-            // 
-            this.ProdutoID.DataPropertyName = "ProdutoID";
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProdutoID.DefaultCellStyle = dataGridViewCellStyle13;
-            this.ProdutoID.HeaderText = "ProdutoID";
-            this.ProdutoID.MinimumWidth = 6;
-            this.ProdutoID.Name = "ProdutoID";
-            this.ProdutoID.ReadOnly = true;
-            this.ProdutoID.Width = 125;
-            // 
-            // NomeProduto
-            // 
-            this.NomeProduto.DataPropertyName = "NomeProduto";
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NomeProduto.DefaultCellStyle = dataGridViewCellStyle14;
-            this.NomeProduto.HeaderText = "Nome";
-            this.NomeProduto.MinimumWidth = 6;
-            this.NomeProduto.Name = "NomeProduto";
-            this.NomeProduto.ReadOnly = true;
-            this.NomeProduto.Width = 125;
-            // 
-            // NomeFornecedor
-            // 
-            this.NomeFornecedor.DataPropertyName = "NomeFornecedor";
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.NomeFornecedor.DefaultCellStyle = dataGridViewCellStyle15;
-            this.NomeFornecedor.HeaderText = "Fornecedor";
-            this.NomeFornecedor.MinimumWidth = 6;
-            this.NomeFornecedor.Name = "NomeFornecedor";
-            this.NomeFornecedor.ReadOnly = true;
-            this.NomeFornecedor.Width = 125;
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.DataPropertyName = "Quantidade";
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle16;
-            this.Quantidade.HeaderText = "Quantidade";
-            this.Quantidade.MinimumWidth = 6;
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.ReadOnly = true;
-            this.Quantidade.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Quantidade.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Quantidade.Width = 125;
             // 
             // Produtos
             // 
